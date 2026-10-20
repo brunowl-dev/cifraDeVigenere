@@ -5,15 +5,14 @@ public class Criptografar
     protected String mensagem;
     protected Chave chave;
 
-    public Criptografar(String Mensagem)
+    public Criptografar(String mensagem)
     {
-        Mensagem.toUpperCase().replaceAll("\\s+", "");
-        this.mensagem = Mensagem;
+        this.mensagem = mensagem.toUpperCase().replaceAll("\\s+", "");
     }
 
-    public void criaChave(String chave)
+    public void setChave(String chave)
     {
-        this.chave = new Chave(chave);
+        this.chave = new Chave(chave.toUpperCase().replaceAll("\\s+", ""));
         if (chave.length() < mensagem.length())
         {
             this.chave.igualaChave(mensagem);
@@ -34,10 +33,5 @@ public class Criptografar
             resultado += (char) (letra);
         }
         return resultado;
-    }
-
-    public String getMensagem()
-    {
-        return mensagem;
     }
 }
