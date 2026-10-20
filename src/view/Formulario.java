@@ -16,11 +16,10 @@ import javax.swing.JButton;
 public class Formulario 
 {
 	private JFrame frame;
-	private JLabel lblTitulo, lblMensagem, lblChave, lblrESLTADO;
+	private JLabel lblTitulo, lblMensagem, lblChave, lblResultado;
 	private JTextField ftxtMensagem, ftxtChave;
 	private JButton btnCriptografar;
 	private Criptografar criptografar = null;
-    private String mensagem, chave;
 	
 	public Formulario()
 	{
@@ -65,10 +64,17 @@ public class Formulario
 		btnCriptografar.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				continue;
+				criptografar = new Criptografar(ftxtMensagem.getText());
+                criptografar.setChave(ftxtChave.getText());
+                lblResultado.setText("Resultado: " + criptografar.getMensagemCriptografada());
 			}
 		});
 		painelDeConteudo.add(btnCriptografar);
+
+        lblResultado = new JLabel("Resultado: ");
+        lblResultado.setFont(new Font("Arial", Font.BOLD, 16));
+        lblResultado.setBounds(25, 325, 400, 25);
+        painelDeConteudo.add(lblResultado);
 
 		frame.setVisible(true);
 	}
