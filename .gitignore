@@ -1,0 +1,13 @@
+# Classes compiladas e logs
+*.class
+*.log
+
+# Eclipse
+.classpath
+.project
+.settings/
+bin/
+
+# Lixo do sistema operacional
+Thumbs.db
+.DS_Store
