@@ -12,7 +12,16 @@ public class Criptografar
         this.mensagem = Mensagem;
     }
 
-    public String getMensagemCriptografada(String chave)
+    public void criaChave(String chave)
+    {
+        this.chave = new Chave(chave);
+        if (chave.length() < mensagem.length())
+        {
+            this.chave.igualaChave(mensagem);
+        }
+    }
+
+    public String getMensagemCriptografada()
     {
         return resultado;
     }
