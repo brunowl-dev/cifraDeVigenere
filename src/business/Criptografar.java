@@ -3,7 +3,6 @@ package business;
 public class Criptografar 
 {
     protected String mensagem;
-    protected String resultado;
     protected Chave chave;
 
     public Criptografar(String Mensagem)
@@ -23,6 +22,17 @@ public class Criptografar
 
     public String getMensagemCriptografada()
     {
+        int letra;
+        String resultado = "";
+        for (int i = 0; i < mensagem.length(); i++)
+        {
+            letra = (mensagem.charAt(i) + chave.getChave().charAt(i)) - 65;
+            if (letra > 90)
+            {
+                letra -= 26;
+            }
+            resultado += (char) (letra);
+        }
         return resultado;
     }
 
