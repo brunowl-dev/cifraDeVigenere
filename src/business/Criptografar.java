@@ -39,11 +39,10 @@ public class Criptografar
     {
         int letra;
         String resultado = "";
-        String criptografada = this.getMensagemCriptografada();
 
         for (int i = 0; i < mensagem.length(); i++)
         {
-            letra = (criptografada.charAt(i) - chave.getChave().charAt(i)) + 65;
+            letra = (mensagem.charAt(i) - chave.getChave().charAt(i)) + 65;
             if (letra < 65)
             {
                 letra += 26;

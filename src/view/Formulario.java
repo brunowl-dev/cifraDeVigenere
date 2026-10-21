@@ -16,9 +16,9 @@ import javax.swing.JButton;
 public class Formulario 
 {
 	private JFrame frame;
-	private JLabel lblTitulo, lblMensagem, lblChave, lblResultado;
+	private JLabel lblTitulo, lblMensagem, lblChave, lblResultado, lblCripto;
 	private JTextField ftxtMensagem, ftxtChave;
-	private JButton btnCriptografar;
+	private JButton btnCriptografar, btnDescriptografar;
 	private Criptografar criptografar = null;
 	
 	public Formulario()
@@ -42,39 +42,56 @@ public class Formulario
         painelDeConteudo.add(lblTitulo);
 
         lblMensagem = new JLabel("Mensagem");
-		lblMensagem.setBounds(50, 150, 150, 20);
+		lblMensagem.setBounds(50, 50, 150, 20);
         lblMensagem.setFont(new Font("Arial", Font.PLAIN, 12));
         painelDeConteudo.add(lblMensagem);
 
         ftxtMensagem = new JTextField();
-		ftxtMensagem.setBounds(150, 150, 300, 20);
+		ftxtMensagem.setBounds(150, 50, 300, 20);
 		painelDeConteudo.add(ftxtMensagem);
 
         lblChave = new JLabel("Chave");
-		lblChave.setBounds(50, 200, 150, 20);
+		lblChave.setBounds(50, 100, 150, 20);
         lblChave.setFont(new Font("Arial", Font.PLAIN, 12));
         painelDeConteudo.add(lblChave);
 
         ftxtChave = new JTextField();
-		ftxtChave.setBounds(150, 200, 300, 20);
+		ftxtChave.setBounds(150, 100, 300, 20);
 		painelDeConteudo.add(ftxtChave);
 
         btnCriptografar = new JButton("CRIPTOGRAFAR");
-		btnCriptografar.setBounds(25, 250, 435, 25);
+		btnCriptografar.setBounds(25, 150, 215, 25);
 		btnCriptografar.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				criptografar = new Criptografar(ftxtMensagem.getText());
                 criptografar.setChave(ftxtChave.getText());
-                lblResultado.setText("Resultado: " + criptografar.getMensagemCriptografada());
+                lblCripto.setText(criptografar.getMensagemCriptografada());
 			}
 		});
 		painelDeConteudo.add(btnCriptografar);
 
-        lblResultado = new JLabel("Resultado: ");
+		btnDescriptografar = new JButton("DESCRIPTOGRAFAR");
+		btnDescriptografar.setBounds(240, 150, 215, 25);
+		btnDescriptografar.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				criptografar = new Criptografar(ftxtMensagem.getText());
+                criptografar.setChave(ftxtChave.getText());
+                lblCripto.setText(criptografar.getMensagemDescriptografada());
+			}
+		});
+		painelDeConteudo.add(btnDescriptografar);
+
+        lblResultado = new JLabel("RESULTADO:");
         lblResultado.setFont(new Font("Arial", Font.BOLD, 16));
-        lblResultado.setBounds(25, 325, 400, 25);
+        lblResultado.setBounds(200, 200, 400, 25);
         painelDeConteudo.add(lblResultado);
+
+		lblCripto = new JLabel();
+        lblCripto.setFont(new Font("Arial", Font.BOLD, 16));
+        lblCripto.setBounds(25, 250, 400, 50);
+        painelDeConteudo.add(lblCripto);
 
 		frame.setVisible(true);
 	}
