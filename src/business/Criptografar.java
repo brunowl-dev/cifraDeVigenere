@@ -30,8 +30,27 @@ public class Criptografar
             {
                 letra -= 26;
             }
-            resultado += (char) (letra);
+            resultado += (char) letra;
         }
+        return resultado;
+    }
+
+    public String getMensagemDescriptografada()
+    {
+        int letra;
+        String resultado = "";
+        String criptografada = this.getMensagemCriptografada();
+
+        for (int i = 0; i < mensagem.length(); i++)
+        {
+            letra = (criptografada.charAt(i) - chave.getChave().charAt(i)) + 65;
+            if (letra < 65)
+            {
+                letra += 26;
+            }
+            resultado += (char) letra;
+        }
+
         return resultado;
     }
 }
