@@ -10,6 +10,8 @@ import java.awt.Container;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 import javax.swing.JButton;
 
@@ -48,6 +50,16 @@ public class Formulario
 
         ftxtMensagem = new JTextField();
 		ftxtMensagem.setBounds(150, 50, 300, 20);
+		ftxtMensagem.addKeyListener(new KeyAdapter() {
+		    @Override
+		    public void keyTyped(KeyEvent e) {
+		        char c = e.getKeyChar();
+
+		        if (!Character.isLetter(c) && c != KeyEvent.VK_BACK_SPACE && c != KeyEvent.VK_DELETE) {
+		            e.consume();
+		        }
+		    }
+		});
 		painelDeConteudo.add(ftxtMensagem);
 
         lblChave = new JLabel("Chave");
@@ -57,6 +69,16 @@ public class Formulario
 
         ftxtChave = new JTextField();
 		ftxtChave.setBounds(150, 100, 300, 20);
+		ftxtChave.addKeyListener(new KeyAdapter() {
+		    @Override
+		    public void keyTyped(KeyEvent e) {
+		        char c = e.getKeyChar();
+
+		        if (!Character.isLetter(c) && c != KeyEvent.VK_BACK_SPACE && c != KeyEvent.VK_DELETE) {
+		            e.consume();
+		        }
+		    }
+		});
 		painelDeConteudo.add(ftxtChave);
 
         btnCriptografar = new JButton("CRIPTOGRAFAR");

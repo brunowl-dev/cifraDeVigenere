@@ -101,10 +101,10 @@ Ainda falta configurar a geração e distribuição de um executável `.exe` par
 
 #### Próximas implementações
 
-- [ ] Implementar prevenção e tratamento de erros.
-- [ ] Validar mensagem e chave antes da criptografia.
-- [ ] Adicionar a função de descriptografar.
-- [ ] Incluir a opção de descriptografia na interface.
+- [x] Implementar prevenção e tratamento de erros.
+- [x] Validar mensagem e chave antes da criptografia.
+- [x] Adicionar a função de descriptografar.
+- [x] Incluir a opção de descriptografia na interface.
 - [ ] Configurar a geração de um executável `.exe` para Windows.
 
 #### Aviso sobre segurança
