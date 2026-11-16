@@ -76,6 +76,32 @@ public class Criptografar
             resultado += (char) letra;
         }
 
-        return resultado;
+        return reduzChave(resultado);
+    }
+
+    private String reduzChave(String chave)
+    {
+        //LIMAOLIMA
+        int i;
+        boolean continuar = false;
+        for (i = 1; i < chave.length(); i++)
+        {
+            continuar = true;
+            for (int j = i; j < chave.length(); j++)
+            {
+                if (chave.charAt(i) != chave.charAt(j - i))
+                {
+                    continuar = false;
+                    break;
+                }
+            }
+
+            if (continuar == true)
+            {
+            return chave.substring(0, i);
+            }
+        }
+        
+        return chave;
     }
 }
