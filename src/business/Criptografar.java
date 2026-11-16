@@ -4,6 +4,7 @@ public class Criptografar
 {
     protected String mensagem;
     protected Chave chave;
+    protected String resultado;
 
     public Criptografar(String mensagem)
     {
@@ -13,7 +14,7 @@ public class Criptografar
     public void setChave(String chave)
     {
         this.chave = new Chave(chave.toUpperCase().replaceAll("\\s+", ""));
-        if (chave.length() < mensagem.length())
+        if (this.chave.getChave().length() < mensagem.length())
         {
             this.chave.igualaChave(mensagem);
         }
@@ -32,17 +33,19 @@ public class Criptografar
             }
             resultado += (char) letra;
         }
+        this.resultado = resultado;
         return resultado;
     }
 
     public String getMensagemDescriptografada()
     {
         int letra;
+        String criptografada = this.getMensagemCriptografada();
         String resultado = "";
 
-        for (int i = 0; i < this.getMensagemCriptografada().length(); i++)
+        for (int i = 0; i < criptografada.length(); i++)
         {
-            letra = (this.getMensagemCriptografada().charAt(i) - chave.getChave().charAt(i)) + 65;
+            letra = (criptografada.charAt(i) - chave.getChave().charAt(i)) + 65;
             if (letra < 65)
             {
                 letra += 26;
@@ -56,7 +59,7 @@ public class Criptografar
     public String descobreChave()
     {
         int letra;
-        String resultado = "", criptografada = this.getMensagemCriptografada();
+        String resultado = "", criptografada = this.resultado;
 
         for (int i = 0; i < mensagem.length(); i++)
         {
