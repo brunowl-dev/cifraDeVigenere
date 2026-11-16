@@ -11,3 +11,6 @@ bin/
 # Lixo do sistema operacional
 Thumbs.db
 .DS_Store
+
+# Configs do VSCODE
+.vscode/
