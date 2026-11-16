@@ -105,8 +105,12 @@ Ainda falta configurar a geração e distribuição de um executável `.exe` par
 - [x] Validar mensagem e chave antes da criptografia.
 - [x] Adicionar a função de descriptografar.
 - [x] Incluir a opção de descriptografia na interface.
-- [ ] Configurar a geração de um executável `.exe` para Windows.
+- [x] Configurar a geração de um executável `.exe` para Windows.
 
 #### Aviso sobre segurança
 
 A Cifra de Vigenère é uma técnica clássica de criptografia e não oferece segurança adequada para proteger informações sensíveis atualmente. Esta aplicação deve ser utilizada para demonstração e estudo do algoritmo, não para proteção de dados reais.
+
+#### Nota sobre o uso de IA
+
+> Utilizei o [Claude Code](https://claude.com/claude-code) apenas para me **orientar** e **mentorar** durante o desenvolvimento, tirando dúvidas e sugerindo caminhos. Todo o código da aplicação foi escrito por mim. As exceções são arquivos de configuração padrão (*boilerplate*), como o `.github/workflows/release.yml` e o `.gitignore`, que foram gerados com a ajuda da ferramenta.

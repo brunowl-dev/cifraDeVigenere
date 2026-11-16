@@ -14,3 +14,10 @@ Thumbs.db
 
 # Configs do VSCODE
 .vscode/
+
+# Arquivos gerados no build
+out/
+dist/
+pacote/
+*.jar
+*.zip

@@ -1,0 +1,47 @@
+name: Release
+
+# Roda quando uma tag no formato v* (ex.: v1.0.0) é enviada ao GitHub
+on:
+  push:
+    tags:
+      - "v*"
+
+# Permissão necessária para criar a Release e anexar arquivos
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Baixar o código
+        uses: actions/checkout@v4
+
+      - name: Instalar o Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "25"
+
+      - name: Compilar e gerar o .jar
+        shell: pwsh
+        run: |
+          javac -d out (Get-ChildItem -Recurse src -Filter *.java).FullName
+          jar --create --file cifraDeVigenere.jar --main-class view.Principal -C out .
+
+      - name: Gerar o .exe (com Java embutido)
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force pacote | Out-Null
+          Copy-Item cifraDeVigenere.jar pacote/
+          jpackage --type app-image --name CifraDeVigenere --input pacote --main-jar cifraDeVigenere.jar --main-class view.Principal --dest dist
+          Compress-Archive -Path dist/CifraDeVigenere -DestinationPath CifraDeVigenere-windows.zip
+
+      - name: Publicar a Release
+        uses: softprops/action-gh-release@v2
+        with:
+          generate_release_notes: true
+          files: |
+            CifraDeVigenere-windows.zip
+            cifraDeVigenere.jar
