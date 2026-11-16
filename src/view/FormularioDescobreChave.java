@@ -62,8 +62,7 @@ public class FormularioDescobreChave {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				criptografar = new Criptografar(ftxtMensagem.getText());
-                criptografar.setChave(ftxtCriptografada.getText());
-                criptografar.getMensagemCriptografada();
+                criptografar.setMensagemCriptografada(ftxtCriptografada.getText());
                 lblChave.setText(criptografar.descobreChave());
 			}
 		});
