@@ -20,6 +20,11 @@ public class Criptografar
         }
     }
 
+    public void setMensagemCriptografada(String mensagemCriptografada)
+    {
+        this.resultado = mensagemCriptografada.toUpperCase().replaceAll("\\s+", "");
+    }
+
     public String getMensagemCriptografada()
     {
         int letra;
